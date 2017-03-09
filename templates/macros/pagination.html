@@ -1,21 +1,52 @@
 {% macro render_pagination(pagination) %}
-{% set previous = '<i class="fa fa-mail-forward fa-rotate-180 fa-lg"></i> Previous' %}
-{% set next = 'Next <i class="fa fa-mail-reply fa-rotate-180 fa-lg"></i>' %}
+
+{% set next = '<span class="button-content">Next <i class="fa fa-mail-reply fa-rotate-180 fa-lg"></i> </span>' %}
 
   <div class="row blog-pagination">
     <div class="small-6 columns previous">
+      <span class="spyder-button">
+        <span class="button-icon">
+          <span class="button-content">
+            <i class="fa fa-mail-forward fa-rotate-180 fa-lg"></i>
+          </span>
+        </span>
+      {%- if pagination.has_prev -%}
+        <a href="{{ pagination.prev|url }}" class="button left">
+      {% else -%}
+        <span class="button disabled left" aria-disabled>
+      {% endif %}
+          <span class="button-content">
+            Previous
+          </span>
       {% if pagination.has_prev %}
-        <a href="{{ pagination.prev|url }}" class="button">{{ previous|safe }}</a>
+        </a>
       {% else %}
-        <span class="button disabled" aria-disabled>{{ previous|safe }}</span>
+        </span>
       {% endif %}
-      </div>
+      </span>
+    </div>
+
     <div class="small-6 columns next">
-      {% if pagination.has_next %}
-        <a href="{{ pagination.next|url }}" class="button">{{ next|safe }}</a>
+      <span class="spyder-button">
+      {%- if pagination.has_next -%}
+        <a href="{{ pagination.next|url }}" class="button right">
       {% else %}
-        <span class="button disabled" aria-disabled>{{ next|safe }}</span>
+        <span class="button disabled right" aria-disabled>
       {% endif %}
+          <span class="button-content">
+            Next
+          </span>
+      {%- if pagination.has_next -%}
+        </a>
+      {%- else -%}
+        </span>
+      {%- endif -%}
+      <span class="button-icon">
+          <span class="button-content">
+            <i class="fa fa-mail-reply fa-rotate-180 fa-lg"></i>
+          </span>
+        </span>
+      </span>
     </div>
   </div>
 {% endmacro %}

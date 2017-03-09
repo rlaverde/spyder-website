@@ -24,6 +24,8 @@ $menu-item-background-active: white;
 $tab-content-border: $spyder-red;
 $tab-content-background: rgba(255,255,255,0.5);
 $tab-background: rgba(255,255,255,0.5);
+$button-background: $spyder-dark-gray;
+$button-padding: 0.5em 0.65em;
 
 @import 'foundation';
 
@@ -140,10 +142,6 @@ div.carousel-home {
   #download {
     margin: 4% 0px;
 
-    #download-button {
-      border-radius: 10px;
-      font-size: 1.5em;
-    }
     p {
       font-size: 1.2em;
       font-style: italic;
@@ -366,5 +364,37 @@ footer{
 .blog-pagination{
   .previous, .next {
     text-align: center
+  }
+}
+
+$button-skew: -25deg;
+
+.spyder-button {
+  display: inline-block;
+  white-space: nowrap;
+
+  .button {
+    transform: skew($button-skew);
+    margin-bottom: 0.5em;
+    &.left {
+      margin-left: -0.1em;
+    }
+    &.right {
+     margin-right: -0.2em;
+    }
+  }
+  .button-icon {
+    transform: skew($button-skew);
+    background-color: $spyder-red;
+    display: inline-block;
+    color: $spyder-white;
+    padding: 0.4em 0.6em;
+    &.large{
+      padding: 0.6em 0.8em;
+    }
+  }
+  .button-content {
+    display: inline-block;
+    transform: skew(-$button-skew);
   }
 }
